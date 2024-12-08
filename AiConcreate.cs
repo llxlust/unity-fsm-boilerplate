@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AiConcreate : MonoBehaviour
 {
-    StateMachine<AiConcreate> stateMachine;
+    public StateMachine<AiConcreate> stateMachine;
     void Start()
     {
         stateMachine = new StateMachine<AiConcreate>(this);
