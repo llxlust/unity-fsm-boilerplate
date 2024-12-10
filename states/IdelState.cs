@@ -1,21 +1,30 @@
 using UnityEngine;
 
-public class IdleState : IState<AiConcreate>
+public class IdleState : IState<MeleeUnit>
 {
 
-    public void Enter(AiConcreate owner)
+    public void Enter(MeleeUnit owner)
     {
-        // Code for what happens when entering the idle state
+      Debug.Log("Enter idle state");
+      owner.animator.SetInteger("animate",1);
     }
 
-    public void Execute(AiConcreate owner)
+    public void Execute(MeleeUnit owner)
     {
-        // Code to execute each frame when the BlackMagician is idle
-        //owner.LookAtPlayer();
+        if (owner.deltaRange <= 10)
+        {
+            // AttachState <-- owner.isAction = false;
+            //
+        }
+       
+        if (owner.deltaRange <= 30)
+        {
+            owner.stateMachine.ChangeState(new ChasingState());
+        }
     }
 
-    public void Exit(AiConcreate owner)
+    public void Exit(MeleeUnit owner)
     {
-        // Code for what happens when leaving the idle state
+        Debug.Log("Exit idle state");
     }
 }
